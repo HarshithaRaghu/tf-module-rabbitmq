@@ -11,3 +11,4 @@ resource "aws_spot_instance_request" "spot-server" {
     Name = "rabbitmq-${var.ENV}"
   }
 }
+
