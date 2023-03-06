@@ -17,8 +17,6 @@ resource "aws_spot_instance_request" "spot-server" {
 
 resource "null_resource" "app" {
 
-  count   = var.OD_INSTANCE_COUNT + var.SPOT_INSTANCE_COUNT
-
   provisioner "remote-exec" {
     connection {
       type     = "ssh"
