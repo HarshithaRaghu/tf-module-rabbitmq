@@ -2,7 +2,7 @@
 data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
-        bucket = "b52-terraform-state-bucket"
+        bucket = "b52-terraform-state-bucket1"
         key    = "vpc/${var.ENV}/terraform.tfstate"
         region = "us-east-1"
   }
@@ -12,7 +12,7 @@ data "terraform_remote_state" "vpc" {
 data "terraform_remote_state" "alb" {
   backend = "s3"
   config = {
-        bucket = "b52-terraform-state-bucket"
+        bucket = "b52-terraform-state-bucket1"
         key    = "alb/${var.ENV}/terraform.tfstate"
         region = "us-east-1"
   }
@@ -21,7 +21,7 @@ data "terraform_remote_state" "alb" {
 data "terraform_remote_state" "db" {
   backend = "s3"
   config = {
-        bucket = "b52-terraform-state-bucket"
+        bucket = "b52-terraform-state-bucket1"
         key    = "databases/${var.ENV}/terraform.tfstate"
         region = "us-east-1"
   }
@@ -31,14 +31,14 @@ data "terraform_remote_state" "db" {
 data "aws_ami" "lab-image" {
   most_recent      = true
   name_regex       = "b52-ansible-dev-20Jan2023"
-  owners           = ["self"]
+  owners           = ["355449129696"]
 }
 
 
 
 # fetching the metadata of the secret
 data "aws_secretsmanager_secret" "secrets" {
-  name = "robotshop/secrets"
+  name = "roboshop/secrets"
 }
 
 data "aws_secretsmanager_secret_version" "secrets" {
