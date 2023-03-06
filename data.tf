@@ -8,13 +8,6 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
-# Declaring the datasource
-data "aws_ami" "lab-iimage" {
-  most_recent      = true
-  name_regex       = "b52-ansible-dev-20Jan2023"
-  owners           = ["self"]
-}
-
 # This is to read the information from the tf alb backend module
 data "terraform_remote_state" "alb" {
   backend = "s3"
