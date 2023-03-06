@@ -3,5 +3,5 @@ resource "aws_route53_record" "dns-record" {
   name    = "${var.COMPONENT}-dev.${data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTEDZONE_NAME}"
   type    = "A"
   ttl     = 10
-  records =  [aws_sp] : [data.terraform_remote_state.alb.outputs.PUBLIC_ALB_ADDRESS]
+  records =  [aws_spot_instance_request.rabbitmq.private_ip]
 }
