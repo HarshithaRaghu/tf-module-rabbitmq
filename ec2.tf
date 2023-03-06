@@ -1,5 +1,5 @@
 # Creates SPOT Servers
-resource "aws_spot_instance_request" "spot-server" {
+resource "aws_spot_instance_request" "rabbitmq" {
   ami                     = data.aws_ami.lab-image.id
   instance_type           = "t3.micro"
   subnet_id               = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS[0]
@@ -22,7 +22,7 @@ resource "null_resource" "app" {
       type     = "ssh"
       user     = local.SSH_USER
       password = local.SSH_PASSWORD
-      host     = element(local.ALL_INSTANCE_IPS, count.index)  
+      host     = aws_spot_instance_request
       }
 
       inline = [
