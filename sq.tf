@@ -8,7 +8,7 @@ resource "aws_security_group" "allow_rabbit" {
   ingress {
     description = "Allows Only App Port"
     from_port   = var.RABBITMQ_PORT
-    to_port     = var.APP_PORT
+    to_port     = var.RABBITMQ_PORT
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]   # [] represent's list. 
   }
@@ -29,6 +29,6 @@ resource "aws_security_group" "allow_rabbit" {
   }
 
   tags = {
-    Name = "roboshop-${var.COMPONENT}-${var.ENV}-sg"
+    Name = "roboshop-rabbitmq-${var.ENV}-sg"
   }
 }
