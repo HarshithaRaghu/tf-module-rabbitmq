@@ -1,3 +1,3 @@
 # tf-module-rabbitmq
 
-AMAZON
+AMAZON MQ : Managed Service in AWS for RabbitMQ is not compatable for our 
